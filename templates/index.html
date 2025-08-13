@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pneumonia Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            text-align: center;
+            margin-top: 30px;
+        }
+        input[type="file"] {
+            margin: 20px;
+            padding: 10px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Pneumonia Detection from Chest X-ray</h2>
+        <p style="text-align: center; color: #666;">Upload a chest X-ray image to detect pneumonia using our trained AI model</p>
+        
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        
+        <form action="/predict" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".png,.jpg,.jpeg" required>
+            <br>
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+</body>
+</html>
